@@ -3,6 +3,10 @@ import streamlit as st
 import os
 from PIL import Image
 
+directory = 'face'
+if not os.path.exists(directory):
+    os.makedirs(directory)
+
 
 def main():
     st.title('Face Verification App')
@@ -48,7 +52,7 @@ def main():
         # Check that 'name' is not empty
         if name and picture and st.button('Save Image'):
             img_path = os.path.join(
-                '/Users/karthikhosur/Documents/face_rec_2/face', f'{name}.png')
+                'face', f'{name}.png')
             with open(img_path, "wb") as f:
                 f.write(picture.read())
             st.success(f'Image of {name} saved successfully!')
@@ -59,7 +63,7 @@ def main():
         # Check that 'name' is not empty
         if name and picture and st.button('Verify Image'):
             new_img_path = os.path.join(
-                '/Users/karthikhosur/Documents/face_rec_2/face', 'temp.png')
+                'face', 'temp.png')
             with open(new_img_path, "wb") as f:
                 f.write(picture.read())
 
@@ -80,7 +84,7 @@ def main():
             'Enter the person\'s name to view saved image')
         if name and st.button('Show Image'):
             img_path = os.path.join(
-                '/Users/karthikhosur/Documents/face_rec_2/face', f'{name}.png')
+                'face', f'{name}.png')
             try:
                 image = Image.open(img_path)
                 st.image(image, caption=f'Saved image of {name}')

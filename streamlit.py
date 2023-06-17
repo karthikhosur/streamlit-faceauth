@@ -69,7 +69,7 @@ def main():
 
             # Verify with stored image
             url = "http://157.230.238.180/verify/images"
-            with open(os.path.join('/Users/karthikhosur/Documents/face_rec_2/face', f'{name}.png'), 'rb') as old_image:
+            with open(os.path.join('face', f'{name}.png'), 'rb') as old_image:
                 files = {
                     'source_image': ('source_image', old_image, 'application/octet-stream'),
                     'target_image': ('target_image', open(new_img_path, 'rb'), 'application/octet-stream')
